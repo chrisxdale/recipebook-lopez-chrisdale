@@ -69,3 +69,32 @@ def recipes_list(request):
             ]
         }
     return render(request, 'recipes_list.html', ctx)
+
+def recipe_one(request):
+    ctx = {
+            "name": "Recipe 1",
+            "ingredients": [
+                {
+                    "name": "tomato",
+                    "quantity": "3pcs"
+                },
+                {
+                    "name": "onion",
+                    "quantity": "1pc"
+                },
+                {
+                    "name": "pork",
+                    "quantity": "1kg"
+                },
+                {
+                    "name": "water",
+                    "quantity": "1L"
+                },
+                {
+                    "name": "sinigang mix",
+                    "quantity": "1 packet"
+                }
+            ],
+            "link": "/recipe/1"
+        }
+    return render(request, 'recipes_one.html', ctx)
