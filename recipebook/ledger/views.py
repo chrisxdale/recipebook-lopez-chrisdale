@@ -3,7 +3,13 @@ from django.shortcuts import render
 def index(request):
     return HttpResponse('Default Page')
 
+
 def recipes_list(request):
+    '''     
+    @fn recipes_list
+    @brief Contains the required given context for the recipes_list and
+    renders the html page for the recipe_list
+    '''
     ctx = {
             "recipes": [
                 {
@@ -71,6 +77,11 @@ def recipes_list(request):
     return render(request, 'recipes_list.html', ctx)
 
 def recipe_one(request):
+    '''     
+    @fn recipe_one
+    @brief Contains the required given context for the recipe 1 and
+    renders the html page for the recipe 1.
+    '''
     ctx = {
             "name": "Recipe 1",
             "ingredients": [
@@ -100,6 +111,11 @@ def recipe_one(request):
     return render(request, 'recipe_one.html', ctx)
 
 def recipe_two(request):
+    '''     
+    @fn recipe_two
+    @brief Contains the required given context for the recipe 2 and
+    renders the html page for the recipe 2.
+    '''
     ctx = {
             "name": "Recipe 2",
             "ingredients": [
