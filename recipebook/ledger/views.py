@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Recipe
 
 def index(request):
     return HttpResponse('Default Page')
@@ -10,144 +11,17 @@ def recipes_list(request):
     @brief Contains the required given context for the recipes_list and
     renders the html page for the recipe_list
     '''
-    ctx = {
-            "recipes": [
-                {
-                    "name": "Recipe 1",
-                    "ingredients": [
-                        {
-                            "name": "tomato",
-                            "quantity": "3pcs"
-                        },
-                        {
-                            "name": "onion",
-                            "quantity": "1pc"
-                        },
-                        {
-                            "name": "pork",
-                            "quantity": "1kg"
-                        },
-                        {
-                            "name": "water",
-                            "quantity": "1L"
-                        },
-                        {
-                            "name": "sinigang mix",
-                            "quantity": "1 packet"
-                        }
-                    ],
-                    "link": "/recipe/1"
-                },
-                {
-                    "name": "Recipe 2",
-                    "ingredients": [
-                        {
-                            "name": "garlic",
-                            "quantity": "1 head"
-                        },
-                        {
-                            "name": "onion",
-                            "quantity": "1pc"
-                        },
-                        {
-                            "name": "vinegar",
-                            "quantity": "1/2cup"
-                        },
-                        {
-                            "name": "water",
-                            "quanity": "1 cup"
-                        },
-                        {
-                            "name": "salt",
-                            "quantity": "1 tablespoon"
-                        },
-                        {
-                            "name": "whole black peppers",
-                            "quantity": "1 tablespoon"
-                        },
-                        {
-                            "name": "pork",
-                            "quantity": "1 kilo"
-                        }
-                    ],
-                    "link": "/recipe/2"
-                }
-            ]
-        }
-    return render(request, 'recipes_list.html', ctx)
+    recipes = Recipe.objects.all()
+    return render(request, 'recipes.html', {'recipes': recipes})
 
-def recipe_one(request):
+def recipe_details(request, id):
     '''     
-    @fn recipe_one
-    @brief Contains the required given context for the recipe 1 and
-    renders the html page for the recipe 1.
+    @fn recipe_details
+    @brief Contains the context for the recipes and
+    renders the html page for the recipes
     '''
+    recipe = Recipe.objects.get(id=id)
     ctx = {
-            "name": "Recipe 1",
-            "ingredients": [
-                {
-                    "name": "tomato",
-                    "quantity": "3pcs"
-                },
-                {
-                    "name": "onion",
-                    "quantity": "1pc"
-                },
-                {
-                    "name": "pork",
-                    "quantity": "1kg"
-                },
-                {
-                    "name": "water",
-                    "quantity": "1L"
-                },
-                {
-                    "name": "sinigang mix",
-                    "quantity": "1 packet"
-                }
-            ],
-            "link": "/recipe/1"
-        }
-    return render(request, 'recipe_one.html', ctx)
-
-def recipe_two(request):
-    '''     
-    @fn recipe_two
-    @brief Contains the required given context for the recipe 2 and
-    renders the html page for the recipe 2.
-    '''
-    ctx = {
-            "name": "Recipe 2",
-            "ingredients": [
-                {
-                    "name": "garlic",
-                    "quantity": "1 head"
-                },
-                {
-                    "name": "onion",
-                    "quantity": "1pc"
-                },
-                {
-                    "name": "vinegar",
-                    "quantity": "1/2cup"
-                },
-                {
-                    "name": "water",
-                    "quantity": "1 cup"
-                },
-                {
-                    "name": "salt",
-                    "quantity": "1 tablespoon"
-                },
-                {
-                    "name": "whole black peppers",
-                    "quantity": "1 tablespoon"
-                },
-                {
-                    "name": "pork",
-                    "quantity": "1 kilo"
-                }
-            ],
-            "link": "/recipe/2"
-        }
-    return render(request, 'recipe_two.html', ctx)
+        'recipe': recipe,
+    }
+    return render(request, 'recipe.html', ctx)
