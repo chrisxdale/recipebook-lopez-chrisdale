@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models import Ingredient, Recipe, RecipeIngredient
 
-class IngredientAdmin(admin.ModelAdmin)
+class IngredientAdmin(admin.ModelAdmin):
     model = Ingredient
 
     list_display = ('name',)
 
-class RecipeAdmin(admin.ModelAdmin)
+class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
 
     list_display = ('name',)
