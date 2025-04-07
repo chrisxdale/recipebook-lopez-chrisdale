@@ -26,4 +26,4 @@ def recipe_details(request, id):
         'recipe': recipe,
         'recipe_ingredient': recipe_ingredient,
     }
-    return render(request, 'recipe_two.html', ctx=)
+    return render(request, 'recipe.html', ctx)
