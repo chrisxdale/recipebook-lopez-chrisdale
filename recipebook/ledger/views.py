@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Recipe, RecipeIngredient
+from .models import Recipe
 
 def index(request):
     return HttpResponse('Default Page')
@@ -12,7 +12,7 @@ def recipes_list(request):
     renders the html page for the recipe_list
     '''
     recipes = Recipe.objects.all()
-    return render(request, 'recipes_list.html', ctx)
+    return render(request, 'recipes.html', {'recipes': recipes})
 
 def recipe_details(request, id):
     '''     
@@ -21,9 +21,7 @@ def recipe_details(request, id):
     renders the html page for the recipe 1.
     '''
     recipe = Recipe.objects.get(id=id)
-    recipe_ingredient = RecipeIngredient.objects.filter(Recipe = recipe)
     ctx = {
         'recipe': recipe,
-        'recipe_ingredient': recipe_ingredient,
     }
     return render(request, 'recipe.html', ctx)
