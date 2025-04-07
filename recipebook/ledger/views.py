@@ -16,9 +16,9 @@ def recipes_list(request):
 
 def recipe_details(request, id):
     '''     
-    @fn recipe_one
-    @brief Contains the required given context for the recipe 1 and
-    renders the html page for the recipe 1.
+    @fn recipe_details
+    @brief Contains the context for the recipes and
+    renders the html page for the recipes
     '''
     recipe = Recipe.objects.get(id=id)
     ctx = {

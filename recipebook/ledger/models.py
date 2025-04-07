@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 
 class Ingredient(models.Model):
+    '''     
+    @fn Ingredient
+    @brief The model class for Ingredient
+    '''
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -11,6 +15,10 @@ class Ingredient(models.Model):
         return reverse('ledger:recipe-details', args=[self.pk])
 
 class Recipe(models.Model):
+    '''     
+    @fn Recipe
+    @brief The model class for Recipe
+    '''
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -20,6 +28,10 @@ class Recipe(models.Model):
         return reverse('ledger:recipe-details', args=[self.pk])
 
 class RecipeIngredient(models.Model):
+    '''     
+    @fn RecipeIngredients
+    @brief The model class for RecipeIngredient
+    '''
     Quantity = models.CharField(max_length=100)
     Ingredient = models.ForeignKey(
         Ingredient,
