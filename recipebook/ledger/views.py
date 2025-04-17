@@ -1,7 +1,8 @@
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 
-class RecipeListView(ListView):
+class RecipeListView(LoginRequiredMixin, ListView):
     '''     
     @cn RecipeListView
     @brief Contains the required given context for the RecipeList and
@@ -11,7 +12,7 @@ class RecipeListView(ListView):
     queryset = Recipe.objects.all()
     template_name = 'recipes.html'
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     '''     
     @cn RecipeDetailView
     @brief Contains the context for the Recipe and
