@@ -1,27 +1,22 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from .models import Recipe
 
-def index(request):
-    return HttpResponse('Default Page')
-
-
-def recipes_list(request):
+class RecipeListView(ListView):
     '''     
-    @fn recipes_list
-    @brief Contains the required given context for the recipes_list and
-    renders the html page for the recipe_list
+    @cn RecipeListView
+    @brief Contains the required given context for the RecipeList and
+    renders the html page for the Recipe List
     '''
-    recipes = Recipe.objects.all()
-    return render(request, 'recipes.html', {'recipes': recipes})
+    context_object_name = 'recipes'
+    queryset = Recipe.objects.all()
+    template_name = 'recipes.html'
 
-def recipe_details(request, id):
+class RecipeDetailView(DetailView):
     '''     
-    @fn recipe_details
-    @brief Contains the context for the recipes and
-    renders the html page for the recipes
+    @cn RecipeDetailView
+    @brief Contains the context for the Recipe and
+    renders the html page for the Recipe
     '''
-    recipe = Recipe.objects.get(id=id)
-    ctx = {
-        'recipe': recipe,
-    }
-    return render(request, 'recipe.html', ctx)
+    context_object_name = 'recipe'
+    model = Recipe
+    template_name = 'recipe.html'
