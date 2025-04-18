@@ -3,6 +3,10 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
+    '''     
+    @cn Profile
+    @brief The model class for Profile
+    '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=255)
@@ -12,7 +16,7 @@ class Profile(models.Model):
 
 class Ingredient(models.Model):
     '''     
-    @fn Ingredient
+    @cn Ingredient
     @brief The model class for Ingredient
     '''
     name = models.CharField(max_length=100)
@@ -25,7 +29,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     '''     
-    @fn Recipe
+    @cn Recipe
     @brief The model class for Recipe
     '''
     name = models.CharField(max_length=100)
@@ -46,7 +50,7 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
     '''     
-    @fn RecipeIngredients
+    @cn RecipeIngredients
     @brief The model class for RecipeIngredient
     '''
     Quantity = models.CharField(max_length=100)
