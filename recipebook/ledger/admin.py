@@ -38,7 +38,7 @@ class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
 
-class UserAdmin(admin.BaseUserAdmin):
+class UserAdmin(BaseUserAdmin):
     '''     
     @cn UserAdmin
     @brief The admin class for User
