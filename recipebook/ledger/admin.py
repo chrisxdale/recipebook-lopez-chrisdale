@@ -1,7 +1,24 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Ingredient, Recipe, RecipeIngredient, Profile
+from .models import Ingredient, Recipe, RecipeIngredient, Profile, RecipeImage
+
+
+class RecipeIngredientInline(admin.TabularInline):
+    '''
+    @cn RecipeIngredientInline
+    @brief The admin class for RecipeIngredientInline
+    '''
+    model = RecipeIngredient
+    
+    list_display = ('Quantity', 'Ingredient', 'Recipe', )
+
+class RecipeImageInline(admin.StackedInline):
+    '''
+    @cn RecipeImageInline
+    @brief The admin class for RecipeImage
+    '''
+    model = RecipeImage
 
 class IngredientAdmin(admin.ModelAdmin):
     '''     
