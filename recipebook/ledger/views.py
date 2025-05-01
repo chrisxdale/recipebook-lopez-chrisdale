@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe, RecipeImage, RecipeIngredient, Ingredient
 from .forms import RecipeForm, RecipeImageForm, RecipeIngredientForm, IngredientForm
